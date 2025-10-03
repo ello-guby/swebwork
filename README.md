@@ -1,13 +1,16 @@
 swebwork
 ========
+
 > [!WARNING]
 > this project was made a while ago.
 > i forgot everything.
+
 a pretty simple web framework
 
 
 directories and files
 ---------------------
+
 ```
 ./              : root
 ├─ routes.json  : routes map
@@ -16,6 +19,7 @@ directories and files
 
 routes.json
 -----------
+
 creating routes is pretty simple, consider the following:
 ```json
 {
@@ -39,4 +43,5 @@ creating routes is pretty simple, consider the following:
 
 TODO
 ====
+
 - i forgot where i left this.
