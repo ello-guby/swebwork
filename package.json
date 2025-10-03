@@ -1,0 +1,19 @@
+{
+    "name": "swebwork",
+    "version": "1.0.0",
+    "description": "a pretty simple web framework",
+    "license": "MIT",
+    "imports": {
+        "#swebwork/*": "./swebwork/src/lib/*"
+    },
+    "scripts": {
+        "server": "node ./swebwork/src/server.cts",
+        "mk-route": "node ./swebwork/script/mk-route.cts",
+        "rm-route": "node ./swebwork/script/rm-route.cts",
+        "emplate": "node ./swebwork/script/emplate.cts",
+        "test": "node ./swebwork/src/test.cts"
+    },
+    "devDependencies": {
+        "@types/node": "^24.3.0"
+    }
+}
