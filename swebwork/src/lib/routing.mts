@@ -21,9 +21,12 @@ export function isRouteRootFileCompatible(file: string) {
     for (const ext of allowedRouteRootFileExtension) {
         if (file.endsWith(ext)) { return true; }
     }
-    return false
+    return false;
 }
 
+/**
+ * struct for routes
+ */
 export type Route = Record<string, any>;
 
 /**
@@ -78,8 +81,8 @@ function extractUrlRoot(url: string): { root: string, trail: string } {
     const urlDir = url.split("/");
     if (url.startsWith("/")) { urlDir.shift(); }
     const root = urlDir.shift();
-    const trail = `/${urlDir.join("/")}`
-    return { root, trail }
+    const trail = `/${urlDir.join("/")}`;
+    return { root, trail };
 }
 
 /**
@@ -144,7 +147,7 @@ export function isRawUrlRouteExist(url: string, route: Route): boolean {
  */
 export function rawGetUrlRoute(url: string, route: Route): string {
     const { root, trail } = extractUrlRoot(url);
-    if (root === "") { return route["@"] }
+    if (root === "") { return route["@"]; }
     else {
         const r = route[root];
         if (r) {
@@ -166,12 +169,12 @@ export function rawGetUrlRoute(url: string, route: Route): string {
 export function insertRoute(url: string, target: string, route: Route): Route {
     const { root, trail } = extractUrlRoot(url);
     if (root === "") {
-        route["@"] = target
+        route["@"] = target;
         return route;
     }
     else {
         if (!route[root]) {
-            route[root] = {}
+            route[root] = {};
         }
         route[root] = insertRoute(trail, target, route[root]);
         if (!route[root]["@"]) { throw ReferenceError(`"${root}" did not have have route root ("@"). inserted deeper then existed.`); }
