@@ -59,8 +59,6 @@ export function checkRoute(route: Route, routeName = "root"): void {
                 continue;
             }
             switch (k) {
-                case "pass":
-                    break;
                 case "dead":
                     checkDirForMod(val, `"@dead" value in '"${routeName}": { "@dead": "${val}" }'`);
                     break;
