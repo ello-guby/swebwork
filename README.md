@@ -55,4 +55,5 @@ TODO
 - i forgot where i left this.
 
 - implement: `@wrap`: *html wraper*: sub routes of the route will be wraped with the `@warp` files.
+- unstrict: each defined route can to not have *route root*.
 
