@@ -7,6 +7,15 @@ swebwork
 
 a pretty simple web framework.
 
+usage
+-----
+
+package commands `npm run`:
+
+- `server`: run the server.
+- `mk-route`: make a route.
+- `rm-route`: remove a route.
+- `emplate`: copy a template file.
 
 directories and files
 ---------------------
