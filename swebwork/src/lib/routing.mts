@@ -179,7 +179,6 @@ export function insertRoute(url: string, target: string, route: Route): Route {
             route[root] = {};
         }
         route[root] = insertRoute(trail, target, route[root]);
-        if (!route[root]["@"]) { throw ReferenceError(`"${root}" did not have have route root ("@"). inserted deeper then existed.`); }
         return route;
     }
 }
