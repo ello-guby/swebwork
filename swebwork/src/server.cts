@@ -56,7 +56,13 @@ function fetch(url: string, req: IncomingMessage): Response {
         }
         const targetMime = textFileExtToMime[ext]
         if (!targetMime) {
-            return require(`../../${file}`).entry(req); // this very busty
+            try {
+                return require(`../../${file}`).entry(req);
+            } catch(e) {
+                const err = `Error on calling "${file}": ${e}`;
+                console.log(`${Color.ERR}${err}`);
+                return new Response(404, "text/plain", err);
+            }
         } else {
             let errno = 200;
             if (!isRawUrlRouteExist(url, routes)) { errno = 404; }
