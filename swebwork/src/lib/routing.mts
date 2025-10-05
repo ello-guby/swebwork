@@ -43,8 +43,9 @@ export function getRoutes(): Route {
  * route check (recursively)
  * @param {Route} route - route object to be checked.
  * @param {string} routeName - the name of the route - default `"root"`.
+ * @returns {boolean} whether this or subroute has `@`.
  */
-export function checkRoute(route: Route, routeName = "root"): void {
+export function checkRoute(route: Route, routeName = "root"): boolean {
     const checkDirForMod = (file: string, id: string) => {
         try { statSync(file); } catch(e) { throw ReferenceError(`Got error when cheking ${id}, Error log:\n${e}`); }
         if (!isRouteRootFileCompatible(file)) { throw ReferenceError(`Expected a valid file extension in ${id}. valid file extensions are ${allowedRouteRootFileExtension}`); }
@@ -69,12 +70,13 @@ export function checkRoute(route: Route, routeName = "root"): void {
             }
             continue;
         }
-        if (typeof val === 'object') { checkRoute(val, key); }
+        if (typeof val === 'object') { hasPath = checkRoute(val, key); }
         else { throw ReferenceError(`Expected type "object" for "${routeName}", but got type "${typeof val}"`); }
     }
     if (!hasPath) {
         throw ReferenceError(`"${routeName}" route did not have route root ("@")`);
     }
+    return hasPath;
 }
 
 function extractUrlRoot(url: string): { root: string, trail: string } {
