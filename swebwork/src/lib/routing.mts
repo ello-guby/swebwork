@@ -41,6 +41,8 @@ export function getRoutes(): Route {
 
 /**
  * route check (recursively)
+ * @param {Route} route - route object to be checked.
+ * @param {string} routeName - the name of the route - default `"root"`.
  */
 export function checkRoute(route: Route, routeName = "root"): void {
     const checkDirForMod = (file: string, id: string) => {
